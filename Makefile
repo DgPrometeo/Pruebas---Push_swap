@@ -6,37 +6,45 @@
 #    By: danielga <danielga@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/17 17:10:42 by danielga          #+#    #+#              #
-#    Updated: 2023/05/17 19:40:31 by danielga         ###   ########.fr        #
+#    Updated: 2023/05/23 18:46:20 by danielga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap.a
+NAME = push_swap
 
-SRC = push_swap.c 
+SRC = main.c 
 
 OBJECTS = $(SRC:.c=.o)
 
 CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
+RM	=	rm -f
+AR	=	ar -rcs
 
-LIBFT = libft/libft.a
+LIBFT	=	./libft/libft.a
+PRINTF	=	./ft_printf/libftprintf.a
 
 all: $(LIBFT) $(NAME)
 
 $(LIBFT):
 	make -C ./libft
 
-$(NAME): $(LIBFT) $(OBJECTS)
-	ar -crs $(NAME) $(OBJECTS) ./libft/libft.a
+$(PRINTF):
+	make -C ./ft_printf
+
+$(NAME): $(LIBFT) $(OBJECTS) | $(PRINTF) $(OBJECTS)
+	$(CC) $(CFLAGS) $(LIBFT) $(PRINTF) $(OBJECTS) -o $(NAME)
 
 clean:
-	rm -rf $(OBJECTS)
+	$(RM) $(OBJECTS)
 	make clean -C ./libft
+	make clean -C ./ft_printf
 
 fclean: clean
-	rm -f $(NAME)
+	$(RM) $(NAME)
 	make -C fclean ./libft
+	make -C fclean ./ft_printf
 
 re: fclean all
 
