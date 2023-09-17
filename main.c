@@ -6,15 +6,17 @@
 /*   By: danielga <danielga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 17:09:22 by danielga          #+#    #+#             */
-/*   Updated: 2023/09/16 19:20:11 by danielga         ###   ########.fr       */
+/*   Updated: 2023/09/17 17:39:17 by danielga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	ft_free_all(t_stack info)
+static void	ft_free_all(t_stack *info)
 {
-	
+	free(info->stack_a);
+	free(info->stack_b);
+	free(info);
 }
 
 int	main(int argc, char **argv)
@@ -26,7 +28,19 @@ int	main(int argc, char **argv)
 	if (!data)
 		exit(0);
 	if (argc == 2)
-		data->total_size = 
+		data->total_size = ft_wordcounter(argv[1], 32);
+	else
+		data->total_size = argc - 1;
+	data->stack_a = ft_calloc(data->total_size, sizeof(int));
+	if (!data->stack_a)
+		ft_free_all(data);
+	data->stack_b = ft_calloc(data->total_size, sizeof(int));
+	if (!data->stack_b)
+		ft_free_all(data);
+	data->size_a = data->total_size;
+	data->size_b = 0;
+	return (0);
+}
 	/*if (argc < 2)
 		return (0);
 	if (argc == 2)
@@ -51,8 +65,6 @@ int	main(int argc, char **argv)
 			return (0);
 		i++;
 	}*/
-	return (0);
-}
 
 /*
 - Tenemos que revisar que nos dé los elementos a ordenar y que no se encuentren
