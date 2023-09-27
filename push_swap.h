@@ -6,7 +6,7 @@
 /*   By: danielga <danielga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 17:10:30 by danielga          #+#    #+#             */
-/*   Updated: 2023/09/17 18:31:27 by danielga         ###   ########.fr       */
+/*   Updated: 2023/09/27 20:51:18 by danielga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,19 @@ void		ft_error(void);
  * @return La cantidad de elementos delimitados por el caracter indicado.
 */
 size_t		ft_wordcounter(char const *s, char c);
+
+//					FT_INSERTS.C
+
+/**
+ * @brief Zona de insertar los números y de control de revisiones.
+ * 
+ * @param data El Struck donde se almancenan los Stacks
+ * @param argc Número de argumentos dados.
+ * @param argv Argumentos dados.
+ * 
+ * @return Fallará si ha ocurrido algún error al revisar, liberando todo.
+*/
+void		ft_insert(t_stack *data, int argc, char **argv);
 
 #endif
 

@@ -6,7 +6,7 @@
 /*   By: danielga <danielga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 17:13:26 by danielga          #+#    #+#             */
-/*   Updated: 2023/09/17 18:11:04 by danielga         ###   ########.fr       */
+/*   Updated: 2023/09/27 20:42:20 by danielga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,13 @@ void	ft_repet_numbers(t_stack *data)
 	}
 }
 
+void	ft_error(void)
+{
+	ft_putstr_fd("Error\n", 2);
+	exit(EXIT_FAILURE);
+}
+
+
 /*int	ft_check_dig(t_stack *data)
 {
 	int	i;
@@ -72,9 +79,3 @@ void	ft_repet_numbers(t_stack *data)
 	}
 }
 */
-
-void	ft_error(void)
-{
-	ft_putstr_fd("Error\n", 2);
-	exit(EXIT_FAILURE);
-}

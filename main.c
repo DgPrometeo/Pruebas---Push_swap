@@ -6,7 +6,7 @@
 /*   By: danielga <danielga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 17:09:22 by danielga          #+#    #+#             */
-/*   Updated: 2023/09/17 17:39:17 by danielga         ###   ########.fr       */
+/*   Updated: 2023/09/27 20:50:20 by danielga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,14 @@ static void	ft_free_all(t_stack *info)
 	free(info->stack_b);
 	free(info);
 }
+
+
+/*
+Función inicial que procederá a crear la struc con las dimensiones correctas.
+Verifica que se haya creado bien, indicamos que el tamaño total de números.
+Los introducimos al Stack_a y b las dimensiones del tamaño total.
+Le indicamos que tamaño tiene cada stack, siendo el máximo en A y 0 en B.
+*/
 
 int	main(int argc, char **argv)
 {
@@ -39,6 +47,7 @@ int	main(int argc, char **argv)
 		ft_free_all(data);
 	data->size_a = data->total_size;
 	data->size_b = 0;
+	ft_insert(data, argc, argv);
 	return (0);
 }
 	/*if (argc < 2)

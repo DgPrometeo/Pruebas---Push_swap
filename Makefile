@@ -6,13 +6,13 @@
 #    By: danielga <danielga@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/17 17:10:42 by danielga          #+#    #+#              #
-#    Updated: 2023/09/17 18:00:03 by danielga         ###   ########.fr        #
+#    Updated: 2023/09/27 20:50:02 by danielga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
-SRC = main.c ft_check.c index.c ft_utils.c 
+SRC = main.c ft_check.c index.c ft_utils.c ft_inserts.c
 
 OBJECTS = $(SRC:.c=.o)
 
