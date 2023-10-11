@@ -6,7 +6,7 @@
 /*   By: danielga <danielga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 17:10:30 by danielga          #+#    #+#             */
-/*   Updated: 2023/09/27 20:51:18 by danielga         ###   ########.fr       */
+/*   Updated: 2023/10/12 00:24:01 by danielga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
  * @param stack_b Puntero al Stack B.
  * @param size_a Tamaño del Stack A.
  * @param size_b Tamaño del Stack B.
+ * @param str Alberga el listado de operaciones realizadas.
  * @param total_size Tamaño total del Stack.
  * 
 */
@@ -33,7 +34,7 @@ typedef struct s_stack
 	int		*stack_b;
 	int		size_a;
 	int		size_b;
-//	char	*str;
+	char	*str;
 	int		total_size;
 }			t_stack;
 

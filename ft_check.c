@@ -6,16 +6,18 @@
 /*   By: danielga <danielga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 17:13:26 by danielga          #+#    #+#             */
-/*   Updated: 2023/09/27 20:42:20 by danielga         ###   ########.fr       */
+/*   Updated: 2023/10/11 20:42:48 by danielga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+
 int	ft_check_digit(char *str)
 {
 	int	i;
 
+	i = 0;
 	while (str[i] != '\0')
 	{
 		if (str[i] == '-' || str[i] == '+')
@@ -43,7 +45,9 @@ void	ft_repet_numbers(t_stack *data)
 				ft_free_all(data);
 				ft_error();
 			}
+			j++;
 		}
+		i++;
 	}
 }
 
