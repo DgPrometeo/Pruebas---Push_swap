@@ -6,12 +6,11 @@
 /*   By: danielga <danielga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 17:13:26 by danielga          #+#    #+#             */
-/*   Updated: 2023/10/11 20:42:48 by danielga         ###   ########.fr       */
+/*   Updated: 2023/10/12 10:41:06 by danielga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 int	ft_check_digit(char *str)
 {
@@ -56,7 +55,6 @@ void	ft_error(void)
 	ft_putstr_fd("Error\n", 2);
 	exit(EXIT_FAILURE);
 }
-
 
 /*int	ft_check_dig(t_stack *data)
 {

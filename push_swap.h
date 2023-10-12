@@ -6,7 +6,7 @@
 /*   By: danielga <danielga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 17:10:30 by danielga          #+#    #+#             */
-/*   Updated: 2023/10/12 00:24:01 by danielga         ###   ########.fr       */
+/*   Updated: 2023/10/12 11:57:31 by danielga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include "./libft/libft.h"
+
+//unistd - Write Read
+//stdlib - Malloc Free Exit
 
 /**
  * @brief Estructura básica con toda la información de los stacks.
@@ -47,6 +50,8 @@ typedef struct s_stack
  * @param argv Argumentos dados.
 */
 int			main(int argc, char **argv);
+
+t_stack		*ft_init_stack(int argc, char **argv);
 
 /**
  * @brief Libera todos los elementos de los stacks.
@@ -97,6 +102,8 @@ void		ft_error(void);
 */
 size_t		ft_wordcounter(char const *s, char c);
 
+void		ft_cpystacks(t_stack *data, int *temp, int *aux);
+
 //					FT_INSERTS.C
 
 /**
@@ -110,7 +117,28 @@ size_t		ft_wordcounter(char const *s, char c);
 */
 void		ft_insert(t_stack *data, int argc, char **argv);
 
-#endif
+void		ft_make_atoi(t_stack *data, char **argv);
 
-//unistd - Write Read
-//stdlib - Malloc Free Exit
+void		ft_insert_str(t_stack *data, char **argv);
+
+//					FT_INDEX.C
+
+char		*ft_index(t_stack *data);
+
+void		ft_bubble_sort(int*temp, t_stack *data);
+
+//					FT_PUSH.C
+
+void		ft_push_a(t_stack *data);
+
+void		ft_push_b(t_stack *data);
+
+//					FT_SWAP.C
+
+void		ft_swap_a(t_stack *data);
+
+void		ft_swap_b(t_stack *data);
+
+void		ft_ss(t_stack *data);
+
+#endif

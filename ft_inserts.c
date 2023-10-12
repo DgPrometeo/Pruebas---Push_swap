@@ -6,7 +6,7 @@
 /*   By: danielga <danielga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 20:49:47 by danielga          #+#    #+#             */
-/*   Updated: 2023/10/12 00:11:01 by danielga         ###   ########.fr       */
+/*   Updated: 2023/10/12 11:16:26 by danielga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_insert_str(t_stack *data, char **argv)
 	tmp = ft_calloc(i + 1, sizeof(char *));
 	tmp[0] = "push_swap";
 	while (++n < i)
-		tmp[n + 1] = argv[x];
+		tmp[n + 1] = argv[n];
 	free(argv);
 	argv = tmp;
 	data->total_size = i;
@@ -35,10 +35,10 @@ void	ft_insert_str(t_stack *data, char **argv)
 	while (argv[i])
 	{
 		if (!ft_check_digit(argv[i]))
-			{
-				ft_free_all(data);
-				ft_error();
-			}
+		{
+			ft_free_all(data);
+			ft_error();
+		}
 		free(argv[i++]);
 	}
 	free(argv);
