@@ -6,7 +6,7 @@
 /*   By: danielga <danielga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 17:30:02 by danielga          #+#    #+#             */
-/*   Updated: 2023/10/12 12:59:32 by danielga         ###   ########.fr       */
+/*   Updated: 2023/10/12 17:57:20 by danielga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ size_t	ft_wordcounter(char const *s, char c)
 
 /*
 Para la función utilizamos dos contadores para el doble while, comparándolo
-con el número total de elementos reiteradamente hasta que el contador exterior lo haga. 
+con el número total de elementos reiteradamente hasta que el contador exterior 
+lo haga. 
 */
 void	ft_cpystacks(t_stack *data, int *temp, int *aux)
 {
@@ -56,4 +57,13 @@ void	ft_cpystacks(t_stack *data, int *temp, int *aux)
 		}
 		i++;
 	}
+}
+
+void	ft_printer(t_stack *data, char *str)
+{
+	char	*temp;
+
+	temp = ft_strjoin(data->str, str);
+	free(data->str);
+	data->str = temp;
 }

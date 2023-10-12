@@ -6,7 +6,7 @@
 /*   By: danielga <danielga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 17:10:30 by danielga          #+#    #+#             */
-/*   Updated: 2023/10/12 11:57:31 by danielga         ###   ########.fr       */
+/*   Updated: 2023/10/12 18:02:53 by danielga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ size_t		ft_wordcounter(char const *s, char c);
 
 void		ft_cpystacks(t_stack *data, int *temp, int *aux);
 
+void		ft_printer(t_stack *data, char *str);
+
 //					FT_INSERTS.C
 
 /**
@@ -140,5 +142,21 @@ void		ft_swap_a(t_stack *data);
 void		ft_swap_b(t_stack *data);
 
 void		ft_ss(t_stack *data);
+
+//					FT_ROTATE.C
+
+void		ft_rot_a(t_stack *data);
+
+void		ft_rot_b(t_stack *data);
+
+void		ft_rr(t_stack *data);
+
+//					FT_REVROT.C
+
+void		ft_revrot_a(t_stack *data);
+
+void		ft_revrot_b(t_stack *data);
+
+void		ft_rrr(t_stack *data);
 
 #endif

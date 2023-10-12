@@ -6,13 +6,15 @@
 #    By: danielga <danielga@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/17 17:10:42 by danielga          #+#    #+#              #
-#    Updated: 2023/10/12 11:32:54 by danielga         ###   ########.fr        #
+#    Updated: 2023/10/12 17:58:33 by danielga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
-SRC = main.c ft_check.c ft_index.c ft_utils.c ft_inserts.c ft_index.c ft_push.c ft_swap.c
+SRC = main.c ft_check.c ft_index.c ft_utils.c ft_inserts.c ft_index.c ft_push.c \
+		ft_swap.c ft_algorithmics.c ft_push.c ft_revrot.c ft_rotate.c ft_swap.c \
+		
 
 OBJECTS = $(SRC:.c=.o)
 
