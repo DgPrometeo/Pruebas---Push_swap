@@ -6,7 +6,7 @@
 /*   By: danielga <danielga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 19:13:17 by danielga          #+#    #+#             */
-/*   Updated: 2023/10/12 12:49:09 by danielga         ###   ########.fr       */
+/*   Updated: 2023/10/14 13:31:06 by danielga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ En esta función necesitamos dos mallocs temporales para poder copiar la
 información, realizar el algoritmo bubble, copiarlos y libterar los datos para
 colocar los nuevos de manera ordenada.
 */
-char	*ft_index(t_stack *data)
+void	ft_index(t_stack *data)
 {
 	int	*temp;
 	int	*aux;
@@ -69,3 +69,67 @@ void	ft_bubble_sort(int*temp, t_stack *data)
 		a++;
 	}
 }
+
+void	ft_radix(t_stack *data)
+{
+	int	no_bit;
+	int	sizebit;
+	int	size_a;
+	int	size_b;
+
+	sizebit = 0;
+	size_a = data->size_a;
+	while (size_a > 1 && ++sizebit)
+		size_a /= 2;
+	no_bit = -1;
+	while (++no_bit <= sizebit)
+	{
+		size_a = data->size_a;
+		while (size_a-- && !ft_check_sort(data))
+		{
+			if (((data->stack_a[0] >> no_bit) & 1) == 0)
+				ft_push_b(data);
+			else
+				ft_rot_a(data);
+		}
+		size_b = data->size_b;
+		while (size_b-- && (no_bit + 1) <= sizebit && !ft_check_sort(data))
+		{
+			if (((data->stack_b[0] >> (no_bit + 1)) & 1) == 0)
+				ft_rot_b(data);
+			else
+				ft_push_a(data);
+		}
+		if (ft_check_sort(data))
+			while (data->size_b != 0)
+				ft_push_a(data);
+	}
+	while (data->size_b != 0)
+		ft_push_a(data);
+}
+
+/*
+void	ft_radix(t_stack *data)
+{
+	int			i;
+	uint32_t	check;
+
+	i = 0;
+	check = 0b1;
+	while (!ft_check_sort(data))
+	{
+		while (i < data->total_size)
+		{
+			if (!(data->stack_a[0] & check))
+				ft_push_b(data);
+			else if (data->size_a > 1)
+				ft_rot_a(data);
+			i++;
+		}
+		while (data->size_b)
+			ft_push_a(data);
+		i = 0;
+		check <<= 1;
+	}
+}
+*/

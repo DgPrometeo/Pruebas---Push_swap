@@ -6,13 +6,16 @@
 /*   By: danielga <danielga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 17:09:22 by danielga          #+#    #+#             */
-/*   Updated: 2023/10/12 13:05:03 by danielga         ###   ########.fr       */
+/*   Updated: 2023/10/14 14:11:40 by danielga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static void	ft_free_all(t_stack *info)
+/*
+Libera la memoria del Stack A, del Stack B, del string donde se guarda
+la secuencia de movimientos, y finalmente libera la structura.
+*/
+void	ft_free_all(t_stack *info)
 {
 	free(info->stack_a);
 	free(info->stack_b);
@@ -49,6 +52,14 @@ t_stack	*ft_init_stack(int argc, char **argv)
 	return (data);
 }
 
+/*
+Primero creamos la estructura con el formato correspondiente, después
+insertamos los números según como nos lo den en los argumentos.
+Revisamos la repetición de números, indexamos los números para simplificar
+procedemos a llevarla a la selección de algoritmos para ejecute la forma
+correcta de ordenamiento. Terminamos imprimiendo en pantalla la secuencia de 
+movimientos y liberando la memoria de la estructura completa.
+*/
 int	main(int argc, char **argv)
 {
 	t_stack	*data;
@@ -56,43 +67,13 @@ int	main(int argc, char **argv)
 	data = ft_init_stack(argc, argv);
 	ft_insert(data, argc, argv);
 	ft_repet_numbers(data);
+	ft_check_limits(data);
 	ft_index(data);
 	ft_algorithmics(data);
-	ft_printf("%s\n", data->str);
+	ft_printf("%s", data->str);
 	ft_free_all(data);
 	return (0);
 }
-
-/*
-Falta indexación
-Iniciar algoritmo
-Crear funciones de movimientos
-*/
-
-	/*if (argc < 2)
-		return (0);
-	if (argc == 2)
-		stack_argv = ft_split(argv[1], 32);
-	if (argc > 2)
-	{
-		i = 0;
-		stack_argv = malloc(sizeof(char *) * argc);
-		if (!stack_argv)
-			return (NULL);
-		while (i < (argc - 1))
-		{
-			stack_argv[i] = ft_strdup(argv[1 + i]);
-			i++;
-		}
-		stack_argv[i] = NULL;
-	}
-	i = 0;
-	while (stack_argv[i] != '\0')
-	{
-		if (ft_isdigit(stack_argv[i]) == 0)
-			return (0);
-		i++;
-	}*/
 
 /*
 - Tenemos que revisar que nos dé los elementos a ordenar y que no se encuentren
@@ -106,8 +87,3 @@ si son más de dos argumentos, tenemos que establecer un malloc del tamaño de a
 y enviarlo a un strdup para que vaya metiendo cada argumento en una celda del
 mismo.
  */
-/*
-La el programa push_swap debe de contener:
-- Creación de pilas A y B.
-- 
-*/

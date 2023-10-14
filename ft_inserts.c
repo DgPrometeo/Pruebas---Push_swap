@@ -6,7 +6,7 @@
 /*   By: danielga <danielga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 20:49:47 by danielga          #+#    #+#             */
-/*   Updated: 2023/10/12 11:16:26 by danielga         ###   ########.fr       */
+/*   Updated: 2023/10/14 14:12:10 by danielga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,11 @@ void	ft_insert_str(t_stack *data, char **argv)
 		}
 		free(argv[i++]);
 	}
+//	if (data->total_size == 1)
+//	{
+//		ft_free_all(data);
+//		ft_error();
+//	}
 	free(argv);
 }
 
@@ -51,7 +56,7 @@ void	ft_make_atoi(t_stack *data, char **argv)
 	i = 1;
 	while (i < data->total_size + 1)
 	{
-		data->stack_a[i - 1] == ft_atoi(argv[i]);
+		data->stack_a[i - 1] = ft_atoi(argv[i]);
 		i++;
 	}
 }
