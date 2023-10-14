@@ -6,7 +6,7 @@
 /*   By: danielga <danielga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 17:13:26 by danielga          #+#    #+#             */
-/*   Updated: 2023/10/14 14:19:08 by danielga         ###   ########.fr       */
+/*   Updated: 2023/10/14 19:02:51 by danielga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_check_digit(char *str)
 	int	i;
 
 	i = 0;
-	while (str[i] != '\0')
+	while (str[i])
 	{
 		if (str[i] == '-' || str[i] == '+')
 			i++;
@@ -78,20 +78,18 @@ int	ft_check_sort(t_stack *data)
 
 void	ft_check_limits(t_stack *data)
 {
-	int		i;
-	long	min_int;
+	int	i;
 
 	i = 0;
-	min_int = -2147483648;
 	while (data->stack_a[i])
 	{
-		if (data->stack_a[i] < min_int || data->stack_a[i] > 2147483647)
+		if (data->stack_a[i] < INT_MIN && data->stack_a[i] > INT_MAX)
 		{
-			ft_printf("error\n");
 			ft_free_all(data);
 			ft_error();
-		}
-		i++;
+		}	
+		else
+			i++;
 	}
 }
 

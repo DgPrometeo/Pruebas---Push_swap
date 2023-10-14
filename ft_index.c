@@ -6,7 +6,7 @@
 /*   By: danielga <danielga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 19:13:17 by danielga          #+#    #+#             */
-/*   Updated: 2023/10/14 13:31:06 by danielga         ###   ########.fr       */
+/*   Updated: 2023/10/14 20:00:20 by danielga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ void	ft_index(t_stack *data)
 	int	*temp;
 	int	*aux;
 
-	temp = malloc(sizeof(int) * data->total_size);
-	aux = malloc(sizeof(int) * data->total_size);
+	temp = malloc(sizeof(int) * data->max);
+	aux = malloc(sizeof(int) * data->max);
 	if (!temp || !aux)
 	{
 		ft_free_all(data);
 		ft_error ();
 	}
-	ft_memcpy(temp, data->stack_a, sizeof(int) * data->total_size);
+	ft_memcpy(temp, data->stack_a, sizeof(int) * data->max);
 	ft_bubble_sort(temp, data);
 	ft_cpystacks(data, temp, aux);
 	free(data->stack_a);
@@ -53,10 +53,10 @@ void	ft_bubble_sort(int*temp, t_stack *data)
 	int	b;
 
 	a = 0;
-	while (a < data->total_size)
+	while (a < data->max)
 	{
 		b = 0;
-		while (b < data->total_size - 1)
+		while (b < data->max - 1)
 		{
 			if (temp[b] > temp[b + 1])
 			{
@@ -70,6 +70,33 @@ void	ft_bubble_sort(int*temp, t_stack *data)
 	}
 }
 
+void	ft_radix(t_stack *data)
+{
+	int			i;
+	uint32_t	check;
+
+	i = 0;
+	check = 0b1;
+	while (!ft_check_sort(data))
+	{
+		while (i < data->total_size)
+		{
+			if (!(data->stack_a[0] & check))
+				ft_push_b(data);
+			else if (data->size_a > 1)
+				ft_rot_a(data, 1);
+			i++;
+		}
+		while (data->size_b)
+			ft_push_a(data);
+		i = 0;
+		check <<= 1;
+	}
+//	if (!ft_check_sort(data))
+//		ft_radix(data);
+}
+
+/*
 void	ft_radix(t_stack *data)
 {
 	int	no_bit;
@@ -106,30 +133,5 @@ void	ft_radix(t_stack *data)
 	}
 	while (data->size_b != 0)
 		ft_push_a(data);
-}
-
-/*
-void	ft_radix(t_stack *data)
-{
-	int			i;
-	uint32_t	check;
-
-	i = 0;
-	check = 0b1;
-	while (!ft_check_sort(data))
-	{
-		while (i < data->total_size)
-		{
-			if (!(data->stack_a[0] & check))
-				ft_push_b(data);
-			else if (data->size_a > 1)
-				ft_rot_a(data);
-			i++;
-		}
-		while (data->size_b)
-			ft_push_a(data);
-		i = 0;
-		check <<= 1;
-	}
 }
 */

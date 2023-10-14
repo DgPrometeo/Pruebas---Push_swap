@@ -6,7 +6,7 @@
 /*   By: danielga <danielga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 17:09:22 by danielga          #+#    #+#             */
-/*   Updated: 2023/10/14 14:11:40 by danielga         ###   ########.fr       */
+/*   Updated: 2023/10/14 19:45:03 by danielga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ t_stack	*ft_init_stack(int argc, char **argv)
 	if (!data->stack_b)
 		ft_free_all(data);
 	data->str = ft_strdup("");
+	data->max = data->total_size;
 	data->size_a = data->total_size;
 	data->size_b = 0;
 	return (data);
@@ -74,16 +75,3 @@ int	main(int argc, char **argv)
 	ft_free_all(data);
 	return (0);
 }
-
-/*
-- Tenemos que revisar que nos dé los elementos a ordenar y que no se encuentren
-repetidos. 
-- Los indexamos para simplificar todo el programa dando la posición correcta
-que debería de tener.
-
-/si son dos argumentos. eso quiere decir que vienen comillados, por lo que 
-lo enviamos a un split, con el delimitador de un espacio.
-si son más de dos argumentos, tenemos que establecer un malloc del tamaño de argc
-y enviarlo a un strdup para que vaya metiendo cada argumento en una celda del
-mismo.
- */

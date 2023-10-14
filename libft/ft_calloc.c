@@ -20,7 +20,7 @@ ft_bzero to empty it.
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	void	*s;
+	char	*s;
 
 	s = malloc(count * size);
 	if (s == NULL)

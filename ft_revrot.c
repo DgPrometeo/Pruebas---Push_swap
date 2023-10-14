@@ -6,13 +6,18 @@
 /*   By: danielga <danielga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 17:50:36 by danielga          #+#    #+#             */
-/*   Updated: 2023/10/14 10:44:10 by danielga         ###   ########.fr       */
+/*   Updated: 2023/10/14 20:07:52 by danielga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_revrot_a(t_stack *data)
+/*
+Para girarlo al revés, revisamos que haya elementos, y comenzamos a decir que 
+el elemento ahora es su posición -1, habiendo guardado en un temporal la última 
+posición para colocarla en la primera.
+*/
+void	ft_revrot_a(t_stack *data, int flag)
 {
 	int	temp;
 	int	i;
@@ -27,11 +32,17 @@ void	ft_revrot_a(t_stack *data)
 			i--;
 		}
 		data->stack_a[i] = temp;
-		ft_printer(data, "rra\n");
 	}
+	if (flag == 1)
+		ft_printer(data, "rra\n");
 }
 
-void	ft_revrot_b(t_stack *data)
+/*
+Para girarlo al revés, revisamos que haya elementos, y comenzamos a decir que 
+el elemento ahora es su posición -1, habiendo guardado en un temporal la última 
+posición para colocarla en la primera.
+*/
+void	ft_revrot_b(t_stack *data, int flag)
 {
 	int	temp;
 	int	i;
@@ -46,13 +57,18 @@ void	ft_revrot_b(t_stack *data)
 			i--;
 		}
 		data->stack_b[i] = temp;
-		ft_printer(data, "rrb\n");
 	}
+	if (flag == 1)
+		ft_printer(data, "rrb\n");
 }
 
+/*
+Para más facilidad, ejecutamos las dos funciones pero con las flag en 0 para que
+no imprima que ha realizado ese comando, salvo el indicado en este.
+*/
 void	ft_rrr(t_stack *data)
 {
-	ft_revrot_a(data);
-	ft_revrot_b(data);
+	ft_revrot_a(data, 0);
+	ft_revrot_b(data, 0);
 	ft_printer(data, "rrr\n");
 }

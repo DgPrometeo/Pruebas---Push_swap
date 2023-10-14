@@ -6,7 +6,7 @@
 /*   By: danielga <danielga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 20:49:47 by danielga          #+#    #+#             */
-/*   Updated: 2023/10/14 14:12:10 by danielga         ###   ########.fr       */
+/*   Updated: 2023/10/14 20:10:35 by danielga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,11 @@ void	ft_insert_str(t_stack *data, char **argv)
 	while (argv[i])
 		i++;
 	tmp = ft_calloc(i + 1, sizeof(char *));
-	tmp[0] = "push_swap";
 	while (++n < i)
 		tmp[n + 1] = argv[n];
 	free(argv);
 	argv = tmp;
-	data->total_size = i;
+	data->max = i;
 	ft_make_atoi(data, argv);
 	i = 1;
 	while (argv[i])
@@ -41,11 +40,6 @@ void	ft_insert_str(t_stack *data, char **argv)
 		}
 		free(argv[i++]);
 	}
-//	if (data->total_size == 1)
-//	{
-//		ft_free_all(data);
-//		ft_error();
-//	}
 	free(argv);
 }
 
@@ -54,13 +48,15 @@ void	ft_make_atoi(t_stack *data, char **argv)
 	int	i;
 
 	i = 1;
-	while (i < data->total_size + 1)
+	while (i < data->max + 1)
 	{
-		data->stack_a[i - 1] = ft_atoi(argv[i]);
+		data->stack_a[i - 1] = ft_atoi_long(argv[i]);
 		i++;
 	}
 }
 
+/*
+*/
 void	ft_insert(t_stack *data, int argc, char **argv)
 {
 	int	i;

@@ -6,7 +6,7 @@
 /*   By: danielga <danielga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 17:10:30 by danielga          #+#    #+#             */
-/*   Updated: 2023/10/14 14:20:28 by danielga         ###   ########.fr       */
+/*   Updated: 2023/10/14 20:40:30 by danielga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <stdlib.h>
 # include <limits.h>
 # include "./libft/libft.h"
-
 
 //unistd - Write Read
 //stdlib - Malloc Free Exit
@@ -31,6 +30,7 @@
  * @param size_b Tamaño del Stack B.
  * @param str Alberga el listado de operaciones realizadas.
  * @param total_size Tamaño total del Stack.
+ * @param max Máximo valor que puede tener Stack A.
  * 
 */
 typedef struct s_stack
@@ -41,6 +41,7 @@ typedef struct s_stack
 	int		size_b;
 	char	*str;
 	int		total_size;
+	int		max;
 }			t_stack;
 
 // 					CHECK.C
@@ -116,17 +117,17 @@ void		ft_push_b(t_stack *data);
 
 //					FT_REVROT.C
 
-void		ft_revrot_a(t_stack *data);
+void		ft_revrot_a(t_stack *data, int flag);
 
-void		ft_revrot_b(t_stack *data);
+void		ft_revrot_b(t_stack *data, int flag);
 
 void		ft_rrr(t_stack *data);
 
 //					FT_ROTATE.C
 
-void		ft_rot_a(t_stack *data);
+void		ft_rot_a(t_stack *data, int flag);
 
-void		ft_rot_b(t_stack *data);
+void		ft_rot_b(t_stack *data, int flag);
 
 void		ft_rr(t_stack *data);
 
@@ -144,9 +145,9 @@ void		ft_sort5(t_stack *data);
 
 //					FT_SWAP.C
 
-void		ft_swap_a(t_stack *data);
+void		ft_swap_a(t_stack *data, int flag);
 
-void		ft_swap_b(t_stack *data);
+void		ft_swap_b(t_stack *data, int flag);
 
 void		ft_ss(t_stack *data);
 
@@ -165,6 +166,8 @@ size_t		ft_wordcounter(char const *s, char c);
 void		ft_cpystacks(t_stack *data, int *temp, int *aux);
 
 void		ft_printer(t_stack *data, char *str);
+
+long		ft_atoi_long(char *str);
 
 // 					MAIN.C
 

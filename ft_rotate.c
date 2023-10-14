@@ -6,13 +6,18 @@
 /*   By: danielga <danielga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 17:47:54 by danielga          #+#    #+#             */
-/*   Updated: 2023/10/14 10:32:14 by danielga         ###   ########.fr       */
+/*   Updated: 2023/10/14 20:06:39 by danielga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_rot_a(t_stack *data)
+/*
+Para girarlo, revisamos que haya elementos, y comenzamos a decir que el elemento
+ahora es su posición +1, habiendo guardado en un temporal la primera posición
+para colocarla en la última.
+*/
+void	ft_rot_a(t_stack *data, int flag)
 {
 	int	temp;
 	int	i;
@@ -27,11 +32,17 @@ void	ft_rot_a(t_stack *data)
 			i++;
 		}
 		data->stack_a[i] = temp;
-		ft_printer(data, "ra\n");
 	}
+	if (flag == 1)
+		ft_printer(data, "ra\n");
 }
 
-void	ft_rot_b(t_stack *data)
+/*
+Para girarlo, revisamos que haya elementos, y comenzamos a decir que el elemento
+ahora es su posición +1, habiendo guardado en un temporal la primera posición
+para colocarla en la última.
+*/
+void	ft_rot_b(t_stack *data, int flag)
 {
 	int	temp;
 	int	i;
@@ -46,13 +57,18 @@ void	ft_rot_b(t_stack *data)
 			i++;
 		}
 		data->stack_b[i] = temp;
-		ft_printer(data, "rb\n");
 	}
+	if (flag == 1)
+		ft_printer(data, "rb\n");
 }
 
+/*
+Para más facilidad, ejecutamos las dos funciones pero con las flag en 0 para que
+no imprima que ha realizado ese comando, salvo el indicado en este.
+*/
 void	ft_rr(t_stack *data)
 {
-	ft_rot_a(data);
-	ft_rot_b(data);
+	ft_rot_a(data, 0);
+	ft_rot_b(data, 0);
 	ft_printer(data, "rr\n");
 }

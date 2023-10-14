@@ -6,7 +6,7 @@
 /*   By: danielga <danielga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 17:30:02 by danielga          #+#    #+#             */
-/*   Updated: 2023/10/14 11:08:07 by danielga         ###   ########.fr       */
+/*   Updated: 2023/10/14 19:45:47 by danielga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,35 @@ size_t	ft_wordcounter(char const *s, char c)
 }
 
 /*
+Es similar a un atoi, pero he modificado para que sean long y abarcar el
+max. entero y el min. entero.
+*/
+long	ft_atoi_long(char *str)
+{
+	int		i;
+	long	nmb;
+	long	symbol;
+
+	i = 0;
+	nmb = 0;
+	symbol = 1;
+	if (str[i] == '\0')
+		return (0);
+	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (str[i] == '-')
+		symbol = -symbol;
+	if (str[i] == '+' || symbol == -1)
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		nmb = nmb * 10 + (str[i] - '0');
+		i++;
+	}
+	return (symbol * nmb);
+}
+
+/*
 Para la función utilizamos dos contadores para el doble while, comparándolo
 con el número total de elementos reiteradamente hasta que el contador exterior 
 lo haga. 
@@ -52,10 +81,10 @@ void	ft_cpystacks(t_stack *data, int *temp, int *aux)
 	int	j;
 
 	i = 0;
-	while (i < data->total_size)
+	while (i < data->max)
 	{
 		j = 0;
-		while (j < data->total_size)
+		while (j < data->max)
 		{
 			if (temp[i] == data->stack_a[j])
 			{
