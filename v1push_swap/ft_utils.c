@@ -6,7 +6,7 @@
 /*   By: danielga <danielga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 17:30:02 by danielga          #+#    #+#             */
-/*   Updated: 2023/10/15 10:21:06 by danielga         ###   ########.fr       */
+/*   Updated: 2023/10/14 18:22:12 by danielga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,6 @@ size_t	ft_wordcounter(char const *s, char c)
 	return (w);
 }
 
-/*
-Es similar a un atoi, pero he modificado para que sean long y abarcar el
-max. entero y el min. entero.
-*/
 long	ft_atoi_long(char *str)
 {
 	int		i;
@@ -81,13 +77,15 @@ void	ft_cpystacks(t_stack *data, int *temp, int *aux)
 	int	j;
 
 	i = 0;
-	while (i < data->max)
+	while (i < data->total_size)
 	{
 		j = 0;
-		while (j < data->max)
+		while (j < data->total_size)
 		{
 			if (temp[i] == data->stack_a[j])
+			{
 				aux[j] = i + 1;
+			}
 			j++;
 		}
 		i++;

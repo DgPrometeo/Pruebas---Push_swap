@@ -6,7 +6,7 @@
 /*   By: danielga <danielga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 19:13:17 by danielga          #+#    #+#             */
-/*   Updated: 2023/10/14 20:00:20 by danielga         ###   ########.fr       */
+/*   Updated: 2023/10/15 13:56:44 by danielga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,33 +70,185 @@ void	ft_bubble_sort(int*temp, t_stack *data)
 	}
 }
 
-void	ft_radix(t_stack *data)
+//				RADIX
+
+//				RADIX DE ARRAY ADAPTADO
+void	counting_sort(t_stack *data, int place)
 {
-	int			i;
-	uint32_t	check;
+	int	count[data->max + 1];
+	int	i;
+	int output;
 
 	i = 0;
-	check = 0b1;
-	while (!ft_check_sort(data))
+	while (i <= data->max)
 	{
-		while (i < data->total_size)
-		{
-			if (!(data->stack_a[0] & check))
-				ft_push_b(data);
-			else if (data->size_a > 1)
-				ft_rot_a(data, 1);
-			i++;
-		}
-		while (data->size_b)
-			ft_push_a(data);
-		i = 0;
-		check <<= 1;
+		count[i] = 0;
+		i++;
 	}
-//	if (!ft_check_sort(data))
-//		ft_radix(data);
+	i = 0;
+	while (i <= data->max)
+	{
+		count[i] += count[i-1];
+		i++;
+	}
+	output[data->size_a];
+	i = data->size_a - 1;
+	while (i >= 0)
+	{
+		output[count[(data->stack_a[i] / place) % 10] - 1] = data->stack_a[i];
+		count[(data->stack_a[i] / place) % 10]--;
+		i--;
+	}
+	i = 0;
+	while (i < data->size_a)
+	{
+		data->stack_a[i] = output[i];
+		i++;
+	}
 }
 
-/*
+void	ft_radix(t_stack *data)
+{
+	int	place;
+
+	place = 1;
+	while (data->max / place > 0)
+	{
+		counting_sort(data, place);
+		place *= 10;
+	}
+}
+//---------------------------------------------------------------------
+	/*
+	for (int i = 0; i < max; ++i)
+		do_something
+	----
+	int	i;
+	i = 0;
+	while (i < max)
+	{
+		i++;
+		do_something
+	}
+	*/
+
+// void	ft_radix(t_stack *data)
+// {
+// 	int			i;
+// 	uint32_t	check;
+
+// 	i = 0;
+// 	check = 0b1;
+// 	while (!ft_check_sort(data))
+// 	{
+// 		while (i < data->total_size)
+// 		{
+// 			if (!(data->stack_a[0] & check))
+// 				ft_push_b(data);
+// 			else if (data->size_a > 1)
+// 				ft_rot_a(data, 1);
+// 			i++;
+// 		}
+// 		while (data->size_b)
+// 			ft_push_a(data);
+// 		i = 0;
+// 		check <<= 1;
+// 	}
+// }
+	/*
+	Calculates the number of bits required to represent the
+	largest element in a stack of integers. It takes a pointer
+	to a pointer to a t_list structure as input and returns
+	the number of bits as an integer.
+	*/
+/* prueba 4
+size_t	ft_get_max_bits(t_stack *stacks)
+{
+	size_t	max_value;
+	size_t	max_bits;
+
+	max_value = stacks->max - 1;
+	max_bits = 0;
+	while ((max_value >> max_bits) > 0)
+		max_bits++;
+	return (max_bits);
+}
+*/
+	/*
+	Function takes two pointers to t_list structures as input and
+	sorts the stack using the radix sort algorithm. It first determines
+	the maximum number of bits needed to represent the largest element
+	in the stack, then iterates through each bit position and performs
+	bucket sorting based on that position. Finally, it assembles the
+	sorted stack by repeatedly pushing the elements back onto stack A.
+	*/
+/* prueba 4
+void	ft_radix(t_stack *data)
+{
+	int		i;
+	int		j;
+	int		size;
+	int		max_bits;
+
+	i = 0;
+	size = data->size_a;
+	max_bits = ft_get_max_bits(data);
+	while (i < max_bits)
+	{
+		j = 0;
+		while (j++ < size)
+		{
+			if (((data->stack_a[0] >> i) & 1) == 1)
+				ft_rot_a(data, 1);
+			else
+				ft_push_b(data);
+		}
+		while (data->size_b != 0)
+			ft_push_a(data);
+		i++;
+	}
+}
+*/
+/*size_t	ft_get_max_bits(t_stack *stacks)
+{ prueba 3
+	size_t	max_value;
+	size_t	max_bits;
+
+	max_value = stacks->max - 1;
+	max_bits = 0;
+	while ((max_value >> max_bits) > 0)
+		max_bits++;
+	return (max_bits);
+}
+
+void	ft_radix(t_stack *data)
+{   prueba 3
+	size_t		max_bits;
+	size_t		bit_idx;
+	int			stack_idx;
+
+	max_bits = ft_get_max_bits(data);
+	bit_idx = 0;
+	while (bit_idx < max_bits)
+	{
+		stack_idx = 0;
+		while (stack_idx < data->max)
+		{
+			if ((((data->stack_a[0]) >> bit_idx) & 1) == 1)
+				ft_rot_a(data, 1);
+			else
+				ft_push_b(data);
+			stack_idx++;
+		}
+		while ((data->size_b) > 0)
+			ft_push_a(data);
+		bit_idx++;
+	}
+}*/
+// --------------------------------------------------------------------
+
+
+/* pprueba 2
 void	ft_radix(t_stack *data)
 {
 	int	no_bit;

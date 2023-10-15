@@ -6,7 +6,7 @@
 /*   By: danielga <danielga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 17:10:30 by danielga          #+#    #+#             */
-/*   Updated: 2023/10/14 20:40:30 by danielga         ###   ########.fr       */
+/*   Updated: 2023/10/15 12:55:27 by danielga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,16 @@
 # define PUSH_SWAP_H
 
 # include <unistd.h>
+# include <stdio.h>
 # include <stdlib.h>
-# include <limits.h>
+# include <string.h>
 # include "./libft/libft.h"
 
 //unistd - Write Read
 //stdlib - Malloc Free Exit
+
+# define INT_MAX 2147483647
+# define INT_MIN -2147483648
 
 /**
  * @brief Estructura básica con toda la información de los stacks.
@@ -77,7 +81,7 @@ void		ft_repet_numbers(t_stack *data);
 */
 int			ft_check_sort(t_stack *data);
 
-void		ft_check_limits(t_stack *data);
+int			check_limits(char *str);
 
 /**
  * @brief Función que muestra el error y sale del programa.
@@ -91,6 +95,8 @@ void		ft_index(t_stack *data);
 void		ft_bubble_sort(int*temp, t_stack *data);
 
 void		ft_radix(t_stack *data);
+
+size_t		ft_get_max_bits(t_stack *stacks);
 
 //					FT_INSERTS.C
 
@@ -189,5 +195,10 @@ t_stack		*ft_init_stack(int argc, char **argv);
  * @return Destruye toda la memoria reservada.
 */
 void		ft_free_all(t_stack *info);
+
+//void		ft_radix_sort(t_stack *data, int bit);
+//void		ft_radix(t_stack *data);
+//int			ft_max_bit(int *arr, int size);
+//int			ft_abs(int x);
 
 #endif

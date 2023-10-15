@@ -6,7 +6,7 @@
 /*   By: danielga <danielga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 17:09:22 by danielga          #+#    #+#             */
-/*   Updated: 2023/10/14 19:45:03 by danielga         ###   ########.fr       */
+/*   Updated: 2023/10/15 12:24:07 by danielga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	main(int argc, char **argv)
 	data = ft_init_stack(argc, argv);
 	ft_insert(data, argc, argv);
 	ft_repet_numbers(data);
-	ft_check_limits(data);
+//	ft_check_limits(data);
 	ft_index(data);
 	ft_algorithmics(data);
 	ft_printf("%s", data->str);

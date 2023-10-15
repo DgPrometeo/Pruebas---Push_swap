@@ -6,7 +6,7 @@
 /*   By: danielga <danielga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 17:13:26 by danielga          #+#    #+#             */
-/*   Updated: 2023/10/15 12:21:48 by danielga         ###   ########.fr       */
+/*   Updated: 2023/10/14 18:13:26 by danielga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_check_digit(char *str)
 	int	i;
 
 	i = 0;
-	while (str[i])
+	while (str[i] != '\0')
 	{
 		if (str[i] == '-' || str[i] == '+')
 			i++;
@@ -41,10 +41,10 @@ void	ft_repet_numbers(t_stack *data)
 	int	j;
 
 	i = 0;
-	while (i < data->total_size - 1)
+	while (i < data->total_size)
 	{
 		j = i;
-		while (j < data->total_size - 1)
+		while (j < data->total_size)
 		{
 			if (data->stack_a[i] == data->stack_a[j] && i != j)
 			{
@@ -67,7 +67,7 @@ int	ft_check_sort(t_stack *data)
 	int	i;
 
 	i = 0;
-	while (i < data->total_size - 1)
+	while (i < data->total_size + 1)
 	{
 		if (data->stack_a[i] > data->stack_a[i + 1])
 			return (0);
@@ -76,19 +76,21 @@ int	ft_check_sort(t_stack *data)
 	return (1);
 }
 
-int	ft_check_limits(char *str)
+void	ft_check_limits(t_stack *data)
 {
-	int	i;
+	int		i;
 
 	i = 0;
-	while (str[i])
+	while (data->stack_a[i])
 	{
-		if ((long)str[i] < INT_MIN && (long)str[i] > INT_MAX)
-			return (0);
-		else
+		if (data->stack_a[i] >= INT_MIN && data->stack_a[i] <= INT_MAX)
 			i++;
+		else
+		{
+			ft_free_all(data);
+			ft_error();
+		}
 	}
-	return (1);
 }
 
 void	ft_error(void)
